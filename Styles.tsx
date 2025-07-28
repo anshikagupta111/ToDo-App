@@ -11,12 +11,19 @@ export default StyleSheet.create({
     backgroundColor: 'white'
     
   },
+  myCategoryCard:{
+    height:100,
+    
+  },
   colorButton:{
     height:15,
     width:15,
     borderWidth:1,
     borderRadius:20,
     // marginRight:10
+  },
+  listModal:{
+    height:100
   },
   categoryCard:{
     height:80,

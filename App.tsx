@@ -19,12 +19,16 @@ function App() {
   const[newTask,setNewTask]=useState('');
   const[id,setId]=useState(0);
   const[modalVisible, setModalVisible] = useState(false);
+  const [listModalVisible,setListModalVisible]=useState(false)
   const [checked,setChecked]=useState(false);
+  const [selectedCategory,setSelectedCategory]=useState(null)
   const AddTask=()=> {
-    if(newTask!==""){
+    if(newTask!=="" && selectedCategory){
       const taskItem={
         id:id.toString(),
         text:newTask,
+        color:selectedCategory.color,
+        checked:false
       };
       setTasks(tasks.concat(taskItem))
 setNewTask("");
@@ -48,11 +52,13 @@ setId(id+1);
     {id:'2',name:'Shopping',color:'#F45E6D'},
     {id:'3',name:'Family',color:'#FFE761'},
     {id:'4',name:'Personal',color:'#B678FF'}]
-
-
-    const itemCategory=()=>{
-      
+    const AddCategory=(category)=>{
+      setSelectedCategory(category);
+      setModalVisible(true)
     }
+
+
+  
   return (
     <View style={styles.container}>
     <View style={styles.header}>
@@ -138,16 +144,16 @@ setId(id+1);
       
 
     </Modal>
-    <View >
-      
-    </View>
+   
+    
     <FlatList
     data={categories}
     keyExtractor={item => item.id}
         renderItem={({ item }) => (
           <TouchableOpacity 
           style={[styles.categoryCard,{backgroundColor:item.color}]}
-          onPress={()=>itemCategory()}
+          onPress={()=>AddCategory(item)}
+          // onPress={()=>setListModalVisible(true)}
           >
              <Text style={styles.categoryName}>{item.name}</Text>
       {/* <Text style={styles.taskCount}>{item.tasks} </Text> */}
@@ -155,7 +161,18 @@ setId(id+1);
 
 
         )}
+         
     />
+    {/* <Modal
+     animationType="fade"
+    transparent={true}
+    // backdropColor='white'
+    visible={listModalVisible}
+    onRequestClose={()=>setListModalVisible(false)} >
+      <View style={styles.listModal}>
+        
+      </View>
+    </Modal> */}
    
 </View>
 
