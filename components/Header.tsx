@@ -1,6 +1,7 @@
 import { StyleSheet,TouchableOpacity, Text, View } from 'react-native'
 import React from 'react'
 import styles from '../Styles'
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 export default function Header({onAddPress}) {
   return (

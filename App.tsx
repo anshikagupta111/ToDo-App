@@ -1,19 +1,11 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
 
 import { View ,TouchableOpacity,Text,Modal,TextInput,FlatList} from 'react-native';
 import React,{useState} from 'react';
 import Header from './components/Header'
 import styles from './Styles'
-// import {Divider} from 'react-native-paper'
-
-
-
+import TaskList from './components/TaskList'
+import TaskInputModal from './components/TaskInputModal';
+import TaskCategory from './components/TaskCategories';
 
 function App() {
   const[tasks, setTasks] = useState([]);
@@ -25,6 +17,7 @@ function App() {
   const [isEditing, setIsEditing] = useState(false);
 const [editTaskId, setEditTaskId] = useState(null);
   const [selectedCategory,setSelectedCategory]=useState(null)
+
   const AddTask = () => {
   if (isEditing) {
     setTasks(prevTask =>
@@ -51,12 +44,12 @@ const [editTaskId, setEditTaskId] = useState(null);
     }
   }
 };
+
   const deleteTask=(delid)=>{
     setTasks(prevTask=>prevTask.filter(tasks=>tasks.id!==delid))
    }
    const toggleTask=(id)=>{
     setTasks(prevTask=>prevTask.map(task=>task.id===id?{...task,checked:!task.checked}:task))
-// setTasks(prevTask=>prevTask.filter(tasks=>tasks.id!==id))
    }
 
 
@@ -80,127 +73,36 @@ const [editTaskId, setEditTaskId] = useState(null);
       setModalVisible(true)
     }
 
-
-  
   return (
     <View style={styles.container}>
       <Header onAddPress={()=>setModalVisible(true)}/>
     
-
 <View>
-  
-
-     <FlatList
-     style={styles.flatlist}
-        data={tasks}
-        
-        keyExtractor={item => item.id}
-        renderItem={({ item }) => (
-         
-          <View style={styles.list} >
-           
-            <View style={styles.checkbox} >
-              <TouchableOpacity style={styles.clickcheck} 
-              onPress={()=>toggleTask(item.id)}
-              
-              >
-                
-                <Text>{item.checked?"✓":""}</Text>
-                
-              </TouchableOpacity>
-            </View>
-            
-            <Text style={styles.tasklist}>{item.text}</Text>
-            <Text style={styles.editButton} onPress={()=>editTask(item.id)}>Edit</Text>
-             <Text style={styles.editButton} onPress={()=>deleteTask(item.id)}>Delete</Text>
-            <View style={[styles.colorButton , {backgroundColor:item.color}]}></View>
-
-
-
-          </View>
-          
-          
-           
-        )}
-        
-      
-       ItemSeparatorComponent={() => (
-    <View style={styles.line} />
-  )}
-      />
-      
-
+    <TaskList
+  tasks={tasks}
+  onToggle={toggleTask}
+  onEdit={editTask}
+  onDelete={deleteTask}
+/>
       </View>
 
+    <TaskInputModal
+  visible={modalVisible}
+  onClose={() => setModalVisible(false)}
+  onSubmit={AddTask}
+  value={newTask}
+  onChangeText={setNewTask}
+  isEditing={isEditing}
+/>
 
-    <Modal
-    // animationType="slide"
-    animationType="fade"
-    transparent={true}
-    // backdropColor='white'
-    visible={modalVisible}
-    onRequestClose={()=>setModalVisible(false)} 
-    >
-      <View style={styles.modalContainer}>
-        <View>
-        <Text style={styles.todo}>Add Todo</Text>
-        <TextInput
-        multiline={true}
-        style={styles.textInput}
-        placeholder='Enter your task'
-        value={newTask}
-        onChangeText={setNewTask}
-        
-        />
-        </View >
-        <View style={styles.donebutton}>
-          <TouchableOpacity  style={styles.cancel}onPress={()=>setModalVisible(false)}>
-            <Text style={styles.canceltext}>Cancel</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={AddTask} style={styles.done}>
-            <Text style={styles.donetext}>Done</Text>
-          </TouchableOpacity>
-            
-        </View>
-              </View>
-      
-
-    </Modal>
-   
-    
-    <FlatList
-    data={categories}
-    keyExtractor={item => item.id}
-        renderItem={({ item }) => (
-          <TouchableOpacity 
-          style={[styles.categoryCard,{backgroundColor:item.color}]}
-          onPress={()=>AddCategory(item)}
-          // onPress={()=>setListModalVisible(true)}
-          >
-             <Text style={styles.categoryName}>{item.name}</Text>
-      {/* <Text style={styles.taskCount}>{item.tasks} </Text> */}
-          </TouchableOpacity>
-
-
-        )}
-         
-    />
-    {/* <Modal
-     animationType="fade"
-    transparent={true}
-    // backdropColor='white'
-    visible={listModalVisible}
-    onRequestClose={()=>setListModalVisible(false)} >
-      <View style={styles.listModal}>
-        
-      </View>
-    </Modal> */}
-   
+    <TaskCategory
+  categories={categories}
+  onSelect={AddCategory}
+/>
 </View>
 
    
-  )
-}
+  )}
 
 
 
