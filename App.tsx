@@ -8,6 +8,7 @@
 
 import { View ,TouchableOpacity,Text,Modal,TextInput,FlatList} from 'react-native';
 import React,{useState} from 'react';
+import Header from './components/Header'
 import styles from './Styles'
 // import {Divider} from 'react-native-paper'
 
@@ -21,25 +22,35 @@ function App() {
   const[modalVisible, setModalVisible] = useState(false);
   const [listModalVisible,setListModalVisible]=useState(false)
   const [checked,setChecked]=useState(false);
+  const [isEditing, setIsEditing] = useState(false);
+const [editTaskId, setEditTaskId] = useState(null);
   const [selectedCategory,setSelectedCategory]=useState(null)
-  const AddTask=()=> {
-    if(newTask!=="" && selectedCategory){
-      const taskItem={
-        id:id.toString(),
-        text:newTask,
-        color:selectedCategory.color,
-        checked:false
+  const AddTask = () => {
+  if (isEditing) {
+    setTasks(prevTask =>
+      prevTask.map(task =>
+        task.id === editTaskId ? { ...task, text: newTask } : task
+      )
+    );
+    setIsEditing(false);
+    setEditTaskId(null);
+    setNewTask("");
+    setModalVisible(false);
+  } else {
+    if (newTask!== "" && selectedCategory) {
+      const taskItem = {
+        id: id.toString(),
+        text: newTask,
+        color: selectedCategory.color,
+        checked: false,
       };
-      setTasks(tasks.concat(taskItem))
-setNewTask("");
-setModalVisible(false)
-setId(id+1);
+      setTasks(prev => prev.concat(taskItem));
+      setId(id + 1);
+      setNewTask("");
+      setModalVisible(false);
     }
-   
-    
-
-
-  };
+  }
+};
   const deleteTask=(delid)=>{
     setTasks(prevTask=>prevTask.filter(tasks=>tasks.id!==delid))
    }
@@ -47,6 +58,18 @@ setId(id+1);
     setTasks(prevTask=>prevTask.map(task=>task.id===id?{...task,checked:!task.checked}:task))
 // setTasks(prevTask=>prevTask.filter(tasks=>tasks.id!==id))
    }
+
+
+   const editTask = (taskId) => {
+  const task = tasks.find(t => t.id === taskId);
+  if (task) {
+    setNewTask(task.text);
+    setSelectedCategory({ color: task.color }); // keep color
+    setIsEditing(true);
+    setEditTaskId(taskId);
+    setModalVisible(true);
+  }
+};
    const categories=[
     {id:'1',name:'Work',color:'#61DEA4'},
     {id:'2',name:'Shopping',color:'#F45E6D'},
@@ -61,12 +84,8 @@ setId(id+1);
   
   return (
     <View style={styles.container}>
-    <View style={styles.header}>
-      <Text style={styles.headercontent}>Today</Text>
-       <TouchableOpacity style={styles.circle} onPress={()=>setModalVisible(true)}>
-        <Text style={styles.plus}>+</Text>
-       </TouchableOpacity>
-    </View>
+      <Header onAddPress={()=>setModalVisible(true)}/>
+    
 
 <View>
   
@@ -83,7 +102,7 @@ setId(id+1);
             <View style={styles.checkbox} >
               <TouchableOpacity style={styles.clickcheck} 
               onPress={()=>toggleTask(item.id)}
-              onLongPress={()=>deleteTask(item.id)}
+              
               >
                 
                 <Text>{item.checked?"✓":""}</Text>
@@ -92,6 +111,8 @@ setId(id+1);
             </View>
             
             <Text style={styles.tasklist}>{item.text}</Text>
+            <Text style={styles.editButton} onPress={()=>editTask(item.id)}>Edit</Text>
+             <Text style={styles.editButton} onPress={()=>deleteTask(item.id)}>Delete</Text>
             <View style={[styles.colorButton , {backgroundColor:item.color}]}></View>
 
 
@@ -124,6 +145,7 @@ setId(id+1);
         <View>
         <Text style={styles.todo}>Add Todo</Text>
         <TextInput
+        multiline={true}
         style={styles.textInput}
         placeholder='Enter your task'
         value={newTask}

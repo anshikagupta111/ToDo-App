@@ -22,8 +22,14 @@ export default StyleSheet.create({
     borderRadius:20,
     // marginRight:10
   },
+  editButton:{
+    color:'red',
+    marginRight:4
+  },
   listModal:{
-    height:100
+    height:100,
+    // backgroundColor:'black',
+    width:200
   },
   categoryCard:{
     height:80,
@@ -65,7 +71,8 @@ marginLeft:10
     marginLeft:20,
    borderRadius:10,
     borderWidth:2,
-    borderColor:"#EBEFF5"
+    borderColor:"#EBEFF5",
+    textAlignVertical:'top'
   },
   list:{
       //  backgroundColor: '#61DEA4',
