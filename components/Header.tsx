@@ -15,7 +15,7 @@ export default function Header({onAddPress,onSearchTextChange}) {
            placeholderTextColor={'grey'}
            style={styles.searchContainer}
            onChangeText={onSearchTextChange}/>
-           <TouchableOpacity style={styles.circle} onPress={()=>onAddPress()}>
+           <TouchableOpacity style={styles.circle} onPress={onAddPress}>
             <Text style={styles.plus}>+</Text>
            </TouchableOpacity>
         </View>

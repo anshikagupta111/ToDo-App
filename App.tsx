@@ -5,7 +5,7 @@ import Header from './components/Header'
 import styles from './Styles'
 import TaskList from './components/TaskList'
 import TaskInputModal from './components/TaskInputModal';
-import TaskCategory from './components/TaskCategories';
+// import TaskCategory from './components/TaskCategories';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 function App() {
@@ -13,7 +13,6 @@ function App() {
   const[newTask,setNewTask]=useState('');
   const[id,setId]=useState(0);
   const[modalVisible, setModalVisible] = useState(false);
-  const [listModalVisible,setListModalVisible]=useState(false)
   const [checked,setChecked]=useState(false);
   const [isEditing, setIsEditing] = useState(false);
 const [editTaskId, setEditTaskId] = useState(null);
@@ -74,10 +73,7 @@ const [editTaskId, setEditTaskId] = useState(null);
     {id:'2',name:'Shopping',color:'#F45E6D'},
     {id:'3',name:'Family',color:'#FFE761'},
     {id:'4',name:'Personal',color:'#B678FF'}]
-    const AddCategory=(category)=>{
-      setSelectedCategory(category);
-      setModalVisible(true)
-    }
+   
 
   return (
     <GestureHandlerRootView>
@@ -102,15 +98,14 @@ const [editTaskId, setEditTaskId] = useState(null);
   value={newTask}
   onChangeText={setNewTask}
   isEditing={isEditing}
-/>
-
-    <TaskCategory
   categories={categories}
-  onSelect={AddCategory}
+  selectedCategory={selectedCategory}
+  setSelectedCategory={setSelectedCategory}
 />
 </View>
-
   </GestureHandlerRootView> 
+
+  
   )}
 
 

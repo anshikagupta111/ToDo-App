@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native"
 export default StyleSheet.create({
   modalContainer:{
     width:340.62,
-    height:297.24,
+    height:347.24,
     marginTop:128.76,
     marginLeft:17.13,
     borderRadius:10,
@@ -38,6 +38,10 @@ export default StyleSheet.create({
     borderRadius:20,
     color:'grey',
     marginLeft:50,
+   
+    textAlign:'center',
+    
+    
   },
   categoryCard:{
     height:80,
