@@ -11,10 +11,7 @@ export default StyleSheet.create({
     backgroundColor: 'white'
     
   },
-  myCategoryCard:{
-    height:100,
-    
-  },
+ 
   colorButton:{
     height:15,
     width:15,
