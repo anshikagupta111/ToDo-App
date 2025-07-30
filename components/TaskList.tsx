@@ -2,7 +2,7 @@
 import React from 'react';
 import { FlatList, View, Text, TouchableOpacity } from 'react-native';
 import styles from '../Styles';
-import Icon from './Icon';
+import Icon from 'react-native-vector-icons';
 
 const TaskList = ({ tasks, onToggle, onEdit, onDelete }) => {
   const renderItem = ({ item }) => (
@@ -29,7 +29,7 @@ const TaskList = ({ tasks, onToggle, onEdit, onDelete }) => {
         Edit
         
       </Text>
-      <Icon name='delete' color='green' size={22} type='MaterialIcons'/>
+      {/* <Icon name='delete' color='green' size={22} type='MaterialIcons'/> */}
       
       <Text style={styles.editButton} onPress={() => onDelete(item.id)}>
         Delete

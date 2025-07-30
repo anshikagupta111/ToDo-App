@@ -6,6 +6,7 @@ import styles from './Styles'
 import TaskList from './components/TaskList'
 import TaskInputModal from './components/TaskInputModal';
 import TaskCategory from './components/TaskCategories';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 function App() {
   const[tasks, setTasks] = useState([]);
@@ -17,6 +18,7 @@ function App() {
   const [isEditing, setIsEditing] = useState(false);
 const [editTaskId, setEditTaskId] = useState(null);
   const [selectedCategory,setSelectedCategory]=useState(null)
+  const [searchQuery,setSearchQuery]=useState('')
 
   const AddTask = () => {
   if (isEditing) {
@@ -52,17 +54,21 @@ const [editTaskId, setEditTaskId] = useState(null);
     setTasks(prevTask=>prevTask.map(task=>task.id===id?{...task,checked:!task.checked}:task))
    }
 
+   const searchTask=(query)=>{
+    setSearchQuery(query)
+   }
 
    const editTask = (taskId) => {
   const task = tasks.find(t => t.id === taskId);
   if (task) {
     setNewTask(task.text);
-    setSelectedCategory({ color: task.color }); // keep color
+    setSelectedCategory({ color: task.color }); 
     setIsEditing(true);
     setEditTaskId(taskId);
     setModalVisible(true);
   }
 };
+
    const categories=[
     {id:'1',name:'Work',color:'#61DEA4'},
     {id:'2',name:'Shopping',color:'#F45E6D'},
@@ -74,12 +80,15 @@ const [editTaskId, setEditTaskId] = useState(null);
     }
 
   return (
+    <GestureHandlerRootView>
     <View style={styles.container}>
-      <Header onAddPress={()=>setModalVisible(true)}/>
+      <Header onAddPress={()=>setModalVisible(true)}
+      onSearchTextChange={searchTask}
+        />
     
 <View>
     <TaskList
-  tasks={tasks}
+  tasks={tasks.filter(task => task.text.toLowerCase().includes(searchQuery.toLowerCase()))}
   onToggle={toggleTask}
   onEdit={editTask}
   onDelete={deleteTask}
@@ -101,7 +110,7 @@ const [editTaskId, setEditTaskId] = useState(null);
 />
 </View>
 
-   
+  </GestureHandlerRootView> 
   )}
 
 

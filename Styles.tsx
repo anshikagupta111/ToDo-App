@@ -31,6 +31,14 @@ export default StyleSheet.create({
     // backgroundColor:'black',
     width:200
   },
+  searchContainer:{
+    borderWidth:1,
+    borderColor:'grey',
+    width:140,
+    borderRadius:20,
+    color:'grey',
+    marginLeft:50,
+  },
   categoryCard:{
     height:80,
     borderRadius:15,
