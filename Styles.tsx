@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native"
 export default StyleSheet.create({
   modalContainer:{
     width:340.62,
-    height:297.24,
+    height:347.24,
     marginTop:128.76,
     marginLeft:17.13,
     borderRadius:10,
@@ -11,10 +11,23 @@ export default StyleSheet.create({
     backgroundColor: 'white'
     
   },
-  myCategoryCard:{
-    height:100,
-    
+ 
+
+   centeredview: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
+
+homemodal:{
+  flex:1,
+  height:'90%',
+  width:'100%',
+  marginTop:53,
+  borderTopLeftRadius:50,
+  borderTopRightRadius:50
+},
+
   colorButton:{
     height:15,
     width:15,
@@ -22,8 +35,26 @@ export default StyleSheet.create({
     borderRadius:20,
     // marginRight:10
   },
+  editButton:{
+    color:'red',
+    marginRight:4
+  },
   listModal:{
-    height:100
+    height:100,
+    // backgroundColor:'black',
+    width:200
+  },
+  searchContainer:{
+    borderWidth:1,
+    borderColor:'grey',
+    width:140,
+    borderRadius:20,
+    color:'grey',
+    marginLeft:50,
+   
+    textAlign:'center',
+    
+    
   },
   categoryCard:{
     height:80,
@@ -65,7 +96,8 @@ marginLeft:10
     marginLeft:20,
    borderRadius:10,
     borderWidth:2,
-    borderColor:"#EBEFF5"
+    borderColor:"#EBEFF5",
+    textAlignVertical:'top'
   },
   list:{
       //  backgroundColor: '#61DEA4',
@@ -171,9 +203,50 @@ marginLeft:10
     letterSpacing:1,
     fontWeight:700,
     lineHeight:41,
+  },
+  modalheadercontent:{
+     fontSize:32,
+    letterSpacing:1,
+    fontWeight:700,
+    lineHeight:41,
+    color:'white',
+    alignSelf:'center',
+    marginTop:15
+  },
+  taskText: {
+  fontSize: 16,
+  color: 'white',
+},
+taskContainer: {
+  flexDirection: 'row',
+  alignItems: 'center',
+  paddingHorizontal: 16,
+  paddingVertical: 12,
+},
+
+clickchecks: {
+  width: 24,
+  height: 24,
+  borderRadius: 12,
+  borderWidth: 2,
+  borderColor: 'white',
+  alignItems: 'center',
+  justifyContent: 'center',
+  marginRight: 12,
+},
+modalclose:{
+  height:8,
+backgroundColor:'white',
+borderRadius:10,
+alignSelf:'center',
+marginTop:4,
+  width:150
+},
+ 
+ 
+
   
 
 
 
-  }
 })
