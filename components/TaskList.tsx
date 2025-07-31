@@ -1,8 +1,8 @@
-// components/TaskList.js
 import React from 'react';
 import { FlatList, View, Text, TouchableOpacity } from 'react-native';
 import styles from '../Styles';
 import Icon from 'react-native-vector-icons';
+import { SwipeListView } from 'react-native-swipe-list-view';
 
 const TaskList = ({ tasks, onToggle, onEdit, onDelete }) => {
   const renderItem = ({ item }) => (

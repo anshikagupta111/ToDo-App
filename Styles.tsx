@@ -12,6 +12,22 @@ export default StyleSheet.create({
     
   },
  
+
+   centeredview: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
+homemodal:{
+  flex:1,
+  height:'90%',
+  width:'100%',
+  marginTop:53,
+  borderTopLeftRadius:50,
+  borderTopRightRadius:50
+},
+
   colorButton:{
     height:15,
     width:15,
@@ -187,9 +203,50 @@ marginLeft:10
     letterSpacing:1,
     fontWeight:700,
     lineHeight:41,
+  },
+  modalheadercontent:{
+     fontSize:32,
+    letterSpacing:1,
+    fontWeight:700,
+    lineHeight:41,
+    color:'white',
+    alignSelf:'center',
+    marginTop:15
+  },
+  taskText: {
+  fontSize: 16,
+  color: 'white',
+},
+taskContainer: {
+  flexDirection: 'row',
+  alignItems: 'center',
+  paddingHorizontal: 16,
+  paddingVertical: 12,
+},
+
+clickchecks: {
+  width: 24,
+  height: 24,
+  borderRadius: 12,
+  borderWidth: 2,
+  borderColor: 'white',
+  alignItems: 'center',
+  justifyContent: 'center',
+  marginRight: 12,
+},
+modalclose:{
+  height:8,
+backgroundColor:'white',
+borderRadius:10,
+alignSelf:'center',
+marginTop:4,
+  width:150
+},
+ 
+ 
+
   
 
 
 
-  }
 })

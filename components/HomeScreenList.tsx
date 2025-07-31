@@ -11,7 +11,7 @@ export default function HomeScreenList({categories,onListPress}) {
       
        renderItem={({ item }) => (
           <TouchableOpacity 
-          onPress={()=>onListPress()}
+          onPress={()=>onListPress(item)}
           style={[styles.categoryCard,{backgroundColor:item.color}]}
 >
       keyExtractor={item=>item.id}

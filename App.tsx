@@ -6,17 +6,15 @@ import styles from './Styles'
 import TaskList from './components/TaskList'
 import TaskInputModal from './components/TaskInputModal';
 import HomeScreenList from './components/HomeScreenList';
-// import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-// import HomeScreenModal from './components/HomeScreenModal';
+import HomeScreenModal from './components/HomeScreenModal';
 
 function App() {
   const[tasks, setTasks] = useState([]);
   const[newTask,setNewTask]=useState('');
   const[id,setId]=useState(0);
   const[modalVisible, setModalVisible] = useState(false);
-  const [selectedCategoryForModal, setSelectedCategoryForModal] = useState(null);
-
+  const [selectedCategoryForModal, setSelectedCategoryForModal] = useState(false);
   const[taskModalVisile,setTaskModalVisile]=useState(false)
   const [checked,setChecked]=useState(false);
   const [isEditing, setIsEditing] = useState(false);
@@ -81,9 +79,7 @@ const [editTaskId, setEditTaskId] = useState(null);
    
 
   return (
-   
-    <GestureHandlerRootView>
-      
+      <GestureHandlerRootView>
     <View style={styles.container}>
       <Header onAddPress={()=>setModalVisible(true)}
       onSearchTextChange={searchTask}
@@ -116,15 +112,18 @@ const [editTaskId, setEditTaskId] = useState(null);
     setTaskModalVisile(true);
   }}
 />
-{/*<HomeScreenModal
+<HomeScreenModal
   visible={taskModalVisile}
-  // selectedCategory={selectedCategoryForModal}
+  selectedCategory={selectedCategoryForModal}
+  tasks={tasks}
+  onToggle={toggleTask}
   onClose={() => setTaskModalVisile(false)}
-/> */}
+/>
 </View>
 
-  </GestureHandlerRootView> 
-
+ 
+  
+</GestureHandlerRootView>
   
   )}
 
