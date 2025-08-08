@@ -1,6 +1,6 @@
 import React from 'react';
 import { FlatList, View, Text, TouchableOpacity } from 'react-native';
-import styles from '../Styles';
+import styles from '../../Styles';
 import Icon from 'react-native-vector-icons';
 import { SwipeListView } from 'react-native-swipe-list-view';
 

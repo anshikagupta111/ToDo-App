@@ -1,7 +1,7 @@
 // components/TaskInputModal.js
 import React from 'react';
 import { Modal, View, Text, TextInput, TouchableOpacity } from 'react-native';
-import styles from '../Styles';
+import styles from '../../Styles';
 import { SelectList } from 'react-native-dropdown-select-list';
 
 const TaskInputModal = ({

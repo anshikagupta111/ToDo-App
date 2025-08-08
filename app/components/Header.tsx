@@ -1,6 +1,6 @@
 import { StyleSheet,TouchableOpacity, Text, View, Alert } from 'react-native'
 import React from 'react'
-import styles from '../Styles'
+import styles from '../../Styles'
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { TextInput } from 'react-native-gesture-handler';
 

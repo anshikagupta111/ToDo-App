@@ -1,7 +1,7 @@
 import { View, Text ,TouchableOpacity,Modal,FlatList} from 'react-native'
 import React from 'react'
 // import { Modal } from 'react-native-paper'
-import styles from '../Styles'
+import styles from '../../Styles'
 import { SafeAreaProvider ,SafeAreaView} from 'react-native-safe-area-context'
 // import { SafeAreaView } from 'react-native/types_generated/index'
 

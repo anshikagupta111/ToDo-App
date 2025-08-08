@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native"
-export default StyleSheet.create({
+const styles= StyleSheet.create({
   modalContainer:{
     width:340.62,
     height:347.24,
@@ -136,7 +136,7 @@ marginLeft:10
   },
   cancel:{
     // flexDirection:'row',
-    width:86,
+    width:87,
     height:40,
     marginTop:11,
     marginLeft:12.71,
@@ -250,3 +250,4 @@ marginTop:4,
 
 
 })
+export default styles
