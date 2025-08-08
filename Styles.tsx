@@ -15,8 +15,8 @@ const styles= StyleSheet.create({
 
    centeredview: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    // justifyContent: 'center',
+    // alignItems: 'center',
   },
 
 homemodal:{
@@ -177,22 +177,22 @@ marginLeft:10
     flexDirection:'row',
     // height:73,
     // width: 353,
-    justifyContent: 'space-between', alignItems: 'center', marginBottom: 30
+    justifyContent: 'space-between', alignItems: 'center', marginBottom: 10
     // justifyContent: 'center',
     // alignItems: 'center',
   },
   circle:{
     width: 40,
     height: 40,
-    borderRadius: 20,               // Circle shape
+    borderRadius: 20,               
     borderWidth: 2,
-    borderColor: '#006CFF',         // Blue border
+    borderColor: '#006CFF',         
     justifyContent: 'center',
     alignItems: 'center',
   },
   plus:{
  fontSize: 24,
-    color: '#006CFF',               // Blue +
+    color: '#006CFF',              
     lineHeight: 26,
     fontWeight: '600',
     marginTop: -2, 
@@ -211,7 +211,7 @@ marginLeft:10
     lineHeight:41,
     color:'white',
     alignSelf:'center',
-    marginTop:15
+    marginTop:10
   },
   taskText: {
   fontSize: 16,
@@ -223,7 +223,12 @@ taskContainer: {
   paddingHorizontal: 16,
   paddingVertical: 12,
 },
-
+taskItem:{
+  flexDirection:'row'
+},
+buttonItem:{
+  flexDirection:'row'
+},
 clickchecks: {
   width: 24,
   height: 24,
@@ -242,12 +247,5 @@ alignSelf:'center',
 marginTop:4,
   width:150
 },
- 
- 
-
-  
-
-
-
 })
 export default styles

@@ -5,7 +5,11 @@ import styles from '../../../Styles'
 import { Header,TaskList ,TaskInputModal,HomeScreenList,HomeScreenModal} from '../../components/index';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { useTasks } from '../../hooks/index';
+import { TouchableOpacity,Text,Button } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import AllTasks from '../AllTasks/AllTasks';
 function HomeScreen() {
+  const navigation=useNavigation()
   const { tasks,
     newTask,
     setNewTask,
@@ -68,6 +72,26 @@ function HomeScreen() {
   onToggle={toggleTask}
   onClose={() => setTaskModalVisile(false)}
 />
+<TouchableOpacity
+        style={styles.button}
+        onPress={() => navigation.navigate('AllTasks',{tasks}) }
+      >
+        <Text style={styles.buttonText}>All Tasks</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => navigation.navigate('CompletedTasks')}
+      >
+        <Text style={styles.buttonText}>Completed Tasks</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => navigation.navigate('PendingTasks')}
+      >
+        <Text style={styles.buttonText}>Pending Tasks</Text>
+      </TouchableOpacity>
 </View>
 </GestureHandlerRootView>
   

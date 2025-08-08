@@ -12,8 +12,7 @@ export default function HomeScreenModal({visible,onClose,selectedCategory,tasks,
  
   
   return (
-    <SafeAreaProvider>
-      <SafeAreaView style={styles.centeredview}>
+    
     <View>
         <Modal
         animationType="slide"
@@ -55,8 +54,7 @@ export default function HomeScreenModal({visible,onClose,selectedCategory,tasks,
       </View>
       </Modal>
     </View>
-    </SafeAreaView>
-    </SafeAreaProvider>
+    
     
   )
 }

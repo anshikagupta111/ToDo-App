@@ -75,7 +75,6 @@ export default function useTasks() {
     isEditing,
     searchQuery,
     modalVisible,
-    // filteredTasks,
     addTask,
     deleteTask,
     toggleTask,
