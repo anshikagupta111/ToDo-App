@@ -166,7 +166,7 @@ marginLeft:10
 
   container:{
     flex:1,
-     paddingTop: 60,
+     paddingTop: 20,
       paddingHorizontal: 20 ,
       backgroundColor: '#FFF', 
       
@@ -177,7 +177,10 @@ marginLeft:10
     flexDirection:'row',
     // height:73,
     // width: 353,
-    justifyContent: 'space-between', alignItems: 'center', marginBottom: 10
+    justifyContent: 'space-between', 
+    alignItems: 'center',
+     marginBottom: 10,
+     
     // justifyContent: 'center',
     // alignItems: 'center',
   },

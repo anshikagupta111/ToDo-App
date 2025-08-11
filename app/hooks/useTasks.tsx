@@ -17,6 +17,7 @@ export default function useTasks() {
     {id:'2',name:'Shopping',color:'#F45E6D'},
     {id:'3',name:'Family',color:'#FFE761'},
     {id:'4',name:'Personal',color:'#B678FF'}]
+    console.log("tasks aree",tasks)
          const addTask = () => {
   if (isEditing) {
     setTasks(prevTask =>

@@ -9,9 +9,7 @@ import { TouchableOpacity,Text,Button } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import AllTasks from '../AllTasks/AllTasks';
 import NavButton from '../../components/navButton';
-function HomeScreen() {
-  const navigation=useNavigation()
-  const { tasks,
+function HomeScreen({ tasks,
     newTask,
     setNewTask,
     categories,
@@ -25,7 +23,9 @@ function HomeScreen() {
     toggleTask,
     editTask,
     modalVisible,
-    searchTask}=useTasks();
+    searchTask}) {
+  const navigation=useNavigation()
+  
   
   const [selectedCategoryForModal, setSelectedCategoryForModal] = useState(false);
   const[taskModalVisile,setTaskModalVisile]=useState(false)
@@ -74,7 +74,7 @@ function HomeScreen() {
   onClose={() => setTaskModalVisile(false)}
 />
 
-      <NavButton
+      {/* <NavButton
       title='all Tasks'
       onPress={() => navigation.navigate('AllTasks',{
           tasks,
@@ -100,7 +100,7 @@ function HomeScreen() {
         deleteTask,
         editTask
       })}
-      />
+      /> */}
 
       
 </View>

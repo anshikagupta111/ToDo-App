@@ -4,7 +4,7 @@ import React from 'react';
 import { HomeScreen } from './app/screens';
 import styles from './Styles';
 import AppNavigator from './app/navigation/appNavigatot';
-import { enableScreens } from 'react-native-screens';
+// import { enableScreens } from 'react-native-screens';
 import { SafeAreaProvider,SafeAreaView } from 'react-native-safe-area-context';
 function App() {
   return(
@@ -18,5 +18,5 @@ function App() {
 
   )
 }
-enableScreens();
+// enableScreens();
 export default App;

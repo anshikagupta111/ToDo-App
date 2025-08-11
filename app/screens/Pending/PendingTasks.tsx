@@ -1,10 +1,11 @@
+
+
 import React from "react";
 import { View } from "react-native";
 import { TaskList } from "../../components";
 
-const PendingTasks = ({route}) => {
-  const {tasks,toggleTask,editTask,deleteTask}=route.params
-  const pendingTasks = tasks.filter((task) => !task.checked);
+const PendingTasks = ({ tasks, toggleTask, editTask, deleteTask }) => {
+  const pendingTasks = tasks.filter(task => !task.checked);
   return (
     <View>
       <TaskList
