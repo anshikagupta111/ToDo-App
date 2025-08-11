@@ -8,6 +8,7 @@ import { useTasks } from '../../hooks/index';
 import { TouchableOpacity,Text,Button } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import AllTasks from '../AllTasks/AllTasks';
+import NavButton from '../../components/navButton';
 function HomeScreen() {
   const navigation=useNavigation()
   const { tasks,
@@ -72,26 +73,36 @@ function HomeScreen() {
   onToggle={toggleTask}
   onClose={() => setTaskModalVisile(false)}
 />
-<TouchableOpacity
-        style={styles.button}
-        onPress={() => navigation.navigate('AllTasks',{tasks}) }
-      >
-        <Text style={styles.buttonText}>All Tasks</Text>
-      </TouchableOpacity>
 
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => navigation.navigate('CompletedTasks')}
-      >
-        <Text style={styles.buttonText}>Completed Tasks</Text>
-      </TouchableOpacity>
+      <NavButton
+      title='all Tasks'
+      onPress={() => navigation.navigate('AllTasks',{
+          tasks,
+        toggleTask,
+        deleteTask,
+        editTask
+      })}
+      />
+       <NavButton
+      title='Completed Tasks'
+      onPress={() => navigation.navigate('CompletedTasks',{
+          tasks,
+        toggleTask,
+        deleteTask,
+        editTask
+      })}
+      />
+       <NavButton
+      title='Pending Tasks'
+      onPress={() => navigation.navigate('PendingTasks',{
+          tasks,
+        toggleTask,
+        deleteTask,
+        editTask
+      })}
+      />
 
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => navigation.navigate('PendingTasks')}
-      >
-        <Text style={styles.buttonText}>Pending Tasks</Text>
-      </TouchableOpacity>
+      
 </View>
 </GestureHandlerRootView>
   
