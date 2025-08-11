@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import React,{useState} from 'react';
 import styles from '../../../Styles'
 import { Header,TaskList ,TaskInputModal,HomeScreenList,HomeScreenModal} from '../../components/index';
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { GestureHandlerRootView, ScrollView } from 'react-native-gesture-handler';
 import { useTasks } from '../../hooks/index';
 import { TouchableOpacity,Text,Button } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
@@ -34,6 +34,7 @@ function HomeScreen({ tasks,
 
   return (
       <GestureHandlerRootView>
+        <ScrollView>
           <View style={styles.container}>
       <Header onAddPress={()=>setModalVisible(true)}
       onSearchTextChange={searchTask}
@@ -104,6 +105,7 @@ function HomeScreen({ tasks,
 
       
 </View>
+</ScrollView>
 </GestureHandlerRootView>
   
   )}

@@ -87,7 +87,8 @@ marginLeft:10
     width:298,
     flexDirection:'row',
     marginTop:10,
-    marginLeft:33
+    marginLeft:33,
+   
   },
   textInput:{
     width:298,

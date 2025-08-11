@@ -39,9 +39,10 @@ const TaskInputModal = ({
             if(selected) {setSelectedCategory(selected)}
           }}
            save="value"
+           
   placeholder="Select Category"
   boxStyles={{marginTop:10,width:298,marginLeft:20}}
-  dropdownStyles={{width:298,marginLeft:20}}
+  dropdownStyles={{width:298,marginLeft:20,position:'absolute',zIndex:1000 , backgroundColor:'white'}}
   defaultOption={
     selectedCategory ? { key: selectedCategory.id, value: selectedCategory.name } : null
   }
