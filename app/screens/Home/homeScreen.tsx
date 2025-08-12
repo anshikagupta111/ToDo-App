@@ -9,7 +9,8 @@ import { TouchableOpacity,Text,Button } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import AllTasks from '../AllTasks/AllTasks';
 import NavButton from '../../components/navButton';
-function HomeScreen({ tasks,
+export default HomeScreen=({ 
+  tasks,
     newTask,
     setNewTask,
     categories,
@@ -23,7 +24,7 @@ function HomeScreen({ tasks,
     toggleTask,
     editTask,
     modalVisible,
-    searchTask}) {
+    searchTask})=> {
   const navigation=useNavigation()
   
   
@@ -109,4 +110,3 @@ function HomeScreen({ tasks,
 </GestureHandlerRootView>
   
   )}
-export default HomeScreen;

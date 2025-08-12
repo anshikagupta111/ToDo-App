@@ -3,7 +3,7 @@
 import React from "react";
 import { TaskList } from "../../components";
 
-const AllTasks = ({ tasks, toggleTask, deleteTask, editTask }) => {
+export default AllTasks = ({ tasks, toggleTask, deleteTask, editTask }) => {
   return (
     <TaskList
       tasks={tasks}
@@ -14,4 +14,4 @@ const AllTasks = ({ tasks, toggleTask, deleteTask, editTask }) => {
   );
 };
 
-export default AllTasks;
+

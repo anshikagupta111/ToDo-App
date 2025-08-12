@@ -4,18 +4,20 @@ import React from 'react';
 import { HomeScreen } from './app/screens';
 import styles from './Styles';
 import AppNavigator from './app/navigation/appNavigatot';
-// import { enableScreens } from 'react-native-screens';
+import 'react-native-gesture-handler';
 import { SafeAreaProvider,SafeAreaView } from 'react-native-safe-area-context';
-import { ScrollView } from 'react-native';
+import DrawerNav from './app/navigation/Drawer';
+import { NavigationContainer } from '@react-navigation/native';
 function App() {
   return(
     <SafeAreaProvider>
           <SafeAreaView style={styles.centeredview}>
-            
+            <NavigationContainer>
   <View style={{flex:1}}>
-    <AppNavigator/>
+    <DrawerNav/>
+    {/* <AppNavigator/> */}
   </View>
- 
+ </NavigationContainer>
   </SafeAreaView>
     </SafeAreaProvider>
 

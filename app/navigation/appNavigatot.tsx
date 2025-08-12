@@ -20,10 +20,10 @@ const AppNavigator = () => {
 
   return (
     <SafeAreaProvider>
-      <NavigationContainer>
+      {/* <NavigationContainer> */}
         <Tab.Navigator
           screenOptions={({ route }) => ({
-            headerShown: true,
+            headerShown: false,
             tabBarStyle: { backgroundColor: '#fff', height: 60 },
             tabBarLabelStyle: { fontSize: 14 },
              tabBarActiveTintColor: 'red',
@@ -54,7 +54,7 @@ const AppNavigator = () => {
             {props => <PendingTasks {...props} {...taskHook} />}
           </Tab.Screen>
         </Tab.Navigator>
-      </NavigationContainer>
+      {/* </NavigationContainer> */}
     </SafeAreaProvider>
   );
 };
