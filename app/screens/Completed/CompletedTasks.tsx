@@ -1,10 +1,10 @@
+import React from 'react';
+import { View } from 'react-native';
+import { TaskList } from '../../components';
+import { useTasksContext } from '../../components/TasksContext';
 
-
-import React from "react";
-import { View } from "react-native";
-import { TaskList } from "../../components";
-
-const CompletedTasks = ({ tasks, toggleTask, deleteTask, editTask }) => {
+const CompletedTasks = () => {
+  const { tasks, toggleTask, deleteTask, editTask } = useTasksContext();
   const completedTasks = tasks.filter(task => task.checked);
   return (
     <View>

@@ -1,25 +1,27 @@
-import { StyleSheet, Text, View,TouchableOpacity } from 'react-native'
-import React from 'react'
-import styles from '../../Styles'
-import { FlatList } from 'react-native-gesture-handler'
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import React from 'react';
+import styles from '../../Styles';
+import { FlatList } from 'react-native-gesture-handler';
+import RNTexts from './Texts';
+import { HomeScreenListProps } from '../Interfaces/HomeScreenListProps';
 
-export default function HomeScreenList({categories,onListPress}) {
+const HomeScreenList:React.FC<HomeScreenListProps>=({ categories, onListPress })=> {
   return (
     <View>
       <FlatList
-      data={categories}
-      
-       renderItem={({ item }) => (
-          <TouchableOpacity 
-          onPress={()=>onListPress(item)}
-          style={[styles.categoryCard,{backgroundColor:item.color}]}
->
-      keyExtractor={item=>item.id}
-      <Text style={styles.categoryName}>{item.name}</Text>
-</TouchableOpacity>
-)}
+        data={categories}
+        keyExtractor={item => item.id}
+        renderItem={({ item }) => (
+          <TouchableOpacity
+            onPress={() => onListPress(item)}
+            style={[styles.categoryCard, { backgroundColor: item.color }]}
+          >
+            
+            <RNTexts style={styles.categoryName} value={item.name} />
+          </TouchableOpacity>
+        )}
       />
     </View>
-  )
+  );
 }
-
+export default HomeScreenList

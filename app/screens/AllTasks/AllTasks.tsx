@@ -1,9 +1,9 @@
+import React from 'react';
+import { TaskList } from '../../components';
+import { useTasksContext } from '../../components/TasksContext';
 
-
-import React from "react";
-import { TaskList } from "../../components";
-
-export default AllTasks = ({ tasks, toggleTask, deleteTask, editTask }) => {
+const AllTasks = () => {
+  const { tasks, toggleTask, deleteTask, editTask } = useTasksContext();
   return (
     <TaskList
       tasks={tasks}
@@ -13,5 +13,4 @@ export default AllTasks = ({ tasks, toggleTask, deleteTask, editTask }) => {
     />
   );
 };
-
-
+export default AllTasks

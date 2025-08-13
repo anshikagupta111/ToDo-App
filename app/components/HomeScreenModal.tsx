@@ -1,60 +1,38 @@
-import { View, Text ,TouchableOpacity,Modal,FlatList} from 'react-native'
-import React from 'react'
-// import { Modal } from 'react-native-paper'
-import styles from '../../Styles'
-import { SafeAreaProvider ,SafeAreaView} from 'react-native-safe-area-context'
-// import { SafeAreaView } from 'react-native/types_generated/index'
+import { View, Text, TouchableOpacity, FlatList } from 'react-native';
+import React from 'react';
+import styles from '../../Styles';
+import RNTexts from './Texts';
+import RNModal from './RNModal';
+import { HomeScreenModalProps } from '../Interfaces/HomeScreenModalProps';
 
-export default function HomeScreenModal({visible,onClose,selectedCategory,tasks,onToggle}) {
-  const filteredTask=tasks.filter(
-    tasks=>tasks.color===selectedCategory.color
-  )
- 
-  
+const HomeScreenModal: React.FC<HomeScreenModalProps> = ({
+  visible,
+  onClose,
+  selectedCategory,
+  tasks,
+  onToggle,
+}) => {
+  const filteredTask = tasks.filter(task => task.color === selectedCategory.color);
+
   return (
-    
-    <View>
-        <Modal
-        animationType="slide"
-      transparent={true}
-      visible={visible}
-      onRequestClose={onClose}
-    >
-       
-          
-                    {/* <Text>Hii</Text> */}
+    <RNModal visible={visible} onClose={onClose} backgroundColor={selectedCategory.color}>
+      <RNTexts style={styles.modalheadercontent} value={selectedCategory.name} />
 
-      <View style={[styles.homemodal,{backgroundColor:selectedCategory.color}]}>
-        <TouchableOpacity style={styles.modalclose} onPress={onClose}>
-           
-          </TouchableOpacity>
-        <Text style={styles.modalheadercontent}>{selectedCategory.name}</Text>
+      <FlatList
+        data={filteredTask}
+        keyExtractor={item => item.id.toString()}
+        renderItem={({ item }) => (
+          <View style={styles.taskContainer}>
+            <TouchableOpacity style={styles.clickchecks} onPress={() => onToggle(item.id)}>
+              <RNTexts style={{}} value={item.checked ? '✓' : ''} />
+            </TouchableOpacity>
+            <Text style={styles.taskText}>{item.text}</Text>
+          </View>
+        )}
+        ItemSeparatorComponent={() => <View style={styles.line} />}
+      />
+    </RNModal>
+  );
+};
 
-         
-               <FlatList
-              data={filteredTask}
-              keyExtractor={item => item.id.toString()}
-              renderItem={({ item }) => (
-                <View>
-                <View style={styles.taskContainer}>
-                  <TouchableOpacity
-                    style={styles.clickchecks}
-                    onPress={() => onToggle(item.id)}
-                  >
-                    <Text>{item.checked ? '✓' : ''}</Text>
-                  </TouchableOpacity>
-                  <Text style={styles.taskText}>{item.text}</Text>
-                </View>
-                 </View>
-              )}
-              ItemSeparatorComponent={() => <View style={styles.line} />}
-              
-            />        
-                
-      </View>
-      </Modal>
-    </View>
-    
-    
-  )
-}
+export default HomeScreenModal;

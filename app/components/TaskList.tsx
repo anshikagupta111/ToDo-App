@@ -1,51 +1,41 @@
 import React from 'react';
 import { FlatList, View, Text, TouchableOpacity } from 'react-native';
 import styles from '../../Styles';
-import Icon from 'react-native-vector-icons';
-import { SwipeListView } from 'react-native-swipe-list-view';
-
-const TaskList = ({ tasks, onToggle, onEdit, onDelete }) => {
-  const renderItem = ({ item }) => (
+import { TaskListProps } from '../Interfaces/TaskListProps';
+import {Task} from '../Interfaces/TasksContextProps'
+import RNTexts from './Texts';
+const TaskList:React.FC<TaskListProps>= ({ tasks, onToggle, onEdit, onDelete }) => {
+  const renderItem = ({ item }:{item:Task}) => (
     <View style={styles.list}>
       <View style={styles.checkbox}>
         <TouchableOpacity
-          style={styles.clickcheck}
           onPress={() => onToggle(item.id)}
         >
           <Text>{item.checked ? '✓' : ''}</Text>
         </TouchableOpacity>
       </View>
 
-      <Text
+      <RNTexts
         style={[
           styles.tasklist,
           item.checked && { textDecorationLine: 'line-through' },
-        ]}
-      >
-        {item.text}
-      </Text>
-
-      <Text style={styles.editButton} onPress={() => onEdit(item.id)}>
-        Edit
-        
-      </Text>
-      {/* <Icon name='delete' color='green' size={22} type='MaterialIcons'/> */}
-      
-      <Text style={styles.editButton} onPress={() => onDelete(item.id)}>
-        Delete
-      </Text>
-
-      <View
-        style={[styles.colorButton, { backgroundColor: item.color }]}
+        ]} value={item.text} onPress={()=>{}}
       />
+       
+
+      <RNTexts style={styles.editButton} value="Edit" onPress={() => onEdit(item.id)} />
+      <RNTexts style={styles.editButton} value="Delete"onPress={() => onDelete(item.id)}/>
+       
+
+      <View style={[styles.colorButton, { backgroundColor: item.color }]} />
     </View>
   );
 
   return (
     <FlatList
-      style={styles.flatlist}
+      keyExtractor={(item) => String(item.id)}
       data={tasks}
-      keyExtractor={(item) => item.id}
+      
       renderItem={renderItem}
       ItemSeparatorComponent={() => <View style={styles.line} />}
     />

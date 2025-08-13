@@ -1,10 +1,10 @@
+import React from 'react';
+import { View } from 'react-native';
+import { TaskList } from '../../components';
+import { useTasksContext } from '../../components/TasksContext';
 
-
-import React from "react";
-import { View } from "react-native";
-import { TaskList } from "../../components";
-
-const PendingTasks = ({ tasks, toggleTask, editTask, deleteTask }) => {
+const PendingTasks = () => {
+  const { tasks, toggleTask, editTask, deleteTask } = useTasksContext();
   const pendingTasks = tasks.filter(task => !task.checked);
   return (
     <View>

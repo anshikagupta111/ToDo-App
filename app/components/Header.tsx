@@ -1,25 +1,24 @@
-import { StyleSheet,TouchableOpacity, Text, View, Alert } from 'react-native'
-import React from 'react'
-import styles from '../../Styles'
-import Icon from 'react-native-vector-icons/FontAwesome';
+import { StyleSheet, TouchableOpacity, Text, View, Alert } from 'react-native';
+import React from 'react';
+import styles from '../../Styles';
 import { TextInput } from 'react-native-gesture-handler';
+import { HeaderProps } from '../Interfaces/HeaderProps';
 
-
-export default function Header({onAddPress,onSearchTextChange}) {
+import RNTexts from './Texts';
+const Header:React.FC<HeaderProps>= ({ onAddPress, onSearchTextChange }) =>{
   return (
-    
     <View style={styles.header}>
-          <Text style={styles.headercontent}>Today</Text>
-           <TextInput
-           placeholder='Search Tasks'
-           placeholderTextColor={'grey'}
-           style={styles.searchContainer}
-           onChangeText={onSearchTextChange}/>
-           <TouchableOpacity style={styles.circle} onPress={onAddPress}>
-            <Text style={styles.plus}>+</Text>
-           </TouchableOpacity>
-        </View>
-        
-  )
+      <RNTexts style={styles.headercontent} value="Today"  />
+      <TextInput
+        placeholder="Search Tasks"
+        placeholderTextColor={'grey'}
+        style={styles.searchContainer}
+        onChangeText={onSearchTextChange}
+      />
+      <TouchableOpacity style={styles.circle} onPress={onAddPress}>
+        <RNTexts style={styles.plus} value="+"  />
+      </TouchableOpacity>
+    </View>
+  );
 }
-
+export default Header

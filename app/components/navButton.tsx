@@ -1,16 +1,13 @@
-import React from "react";
-import { TouchableOpacity } from "react-native";
-import styles from "../../Styles";
-import { Text } from "react-native";
-const NavButton=({title,onPress})=>{
-        return(
-            <TouchableOpacity
-            style={styles.Button}
-            onPress={onPress}
-            >
-                <Text>{title}</Text>
-               
-            </TouchableOpacity>
-        )
-}
-export default NavButton
+import React from 'react';
+import { TouchableOpacity } from 'react-native';
+import styles from '../../Styles';
+import { Text } from 'react-native';
+import { NavButtonProps } from '../Interfaces/NavButtonProps';
+const NavButton:React.FC<NavButtonProps> = ({ title, onPress }) => {
+  return (
+    <TouchableOpacity  onPress={onPress}>
+      <Text>{title}</Text>
+    </TouchableOpacity>
+  );
+};
+export default NavButton;
