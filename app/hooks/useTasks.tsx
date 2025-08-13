@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native';
 import { useState } from 'react';
 import React from 'react';
+import { categories } from '../Constants/Categories';
 
 export default function useTasks() {
   const [isEditing, setIsEditing] = useState(false);
@@ -11,12 +12,7 @@ export default function useTasks() {
   const [newTask, setNewTask] = useState('');
   const [id, setId] = useState(0);
   const [modalVisible, setModalVisible] = useState(false);
-  const categories = [
-    { id: '1', name: 'Work', color: '#61DEA4' },
-    { id: '2', name: 'Shopping', color: '#F45E6D' },
-    { id: '3', name: 'Family', color: '#FFE761' },
-    { id: '4', name: 'Personal', color: '#B678FF' },
-  ];
+  
   console.log('tasks aree', tasks);
   const addTask = () => {
     if (isEditing) {

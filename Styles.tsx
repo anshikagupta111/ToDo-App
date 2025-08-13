@@ -28,7 +28,7 @@ const styles= StyleSheet.create({
 
 homemodal:{
    flex: 1,
-    height: '90%',
+    height: '80%',
     width: '100%',
     marginTop: hp(6.52),
     borderTopLeftRadius: 50,
@@ -266,6 +266,7 @@ height: hp(0.98),
 
  modalBackground: {
     flex: 1,
+  
     justifyContent: 'center',
   },
   closeArea: {

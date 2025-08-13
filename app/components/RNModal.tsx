@@ -9,7 +9,7 @@ const RNModal: React.FC<CustomModalProps> = ({
   backgroundColor = 'white',
 }) => {
   return (
-    <Modal animationType="slide" transparent={true} visible={visible} onRequestClose={onClose}>
+    <Modal style={styles.viewing}animationType="slide" transparent={true} visible={visible} onRequestClose={onClose}>
       <View style={[styles.modalBackground, { backgroundColor }]}>
         <TouchableOpacity style={styles.closeArea} onPress={onClose} />
         <View style={styles.content}>{children}</View>
